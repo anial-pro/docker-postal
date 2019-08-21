@@ -20,4 +20,4 @@ if [[ -z "${SERVER}" ]];then
     exit 1
 fi
 
-exec /usr/sbin/postal "$@" -f /postal/sender "${SERVER}" /postal/recipient
+exec "$@"

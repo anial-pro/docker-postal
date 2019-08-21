@@ -14,7 +14,10 @@ RUN mkdir -p /postal/logs
 
 WORKDIR /postal
 
+COPY wait-for-it.sh /usr/local/bin/
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 
-CMD [ "-M", "25", "-m", "35", "-t", "1", "-r", "1"]
+CMD ["/usr/sbin/postal"]
+
+
