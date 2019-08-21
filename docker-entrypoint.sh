@@ -22,4 +22,4 @@ if [[ -z "${SERVER}" ]];then
     exit 1
 fi
 
-exec "$@"
+exec "wait-for-it.sh '${RECIPIENT_DOMAIN}':25 -- $@"
