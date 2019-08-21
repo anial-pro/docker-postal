@@ -2,6 +2,8 @@
 
 
 if [[ -n "${RECIPIENT}" ]]; then
+    RECIPIENT_DOMAIN="$(echo "$RECIPIENT" | cut -d "@" -f 2)"
+
     echo "$RECIPIENT" > /postal/recipient
 else
     echo "Please set RECIPIENT environment" && \
@@ -20,4 +22,4 @@ if [[ -z "${SERVER}" ]];then
     exit 1
 fi
 
-exec "$@"
+exec "wait-for-it.sh ${RECIPIENT_DOMAIN}:25 -- $@"
